@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Using Service Injection Calc";
+    var rand = new Random();
+    int f = rand.Next() % 11;
+    int s = rand.Next() % 11;
+    var first = $"{f}";
+    var second = $"{s}";
+    var sum = $"{f} + {s} = {f + s}";
+    var sub = $"{f} - {s} = {f - s}";
+    var mult = $"{f} * {s} = {f * s}";
+    var div = s == 0
+        ? "знаменатель равен нулю"
+        : $"{f} / {s} = {f / s}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<dl class="row">
+    <dt class="col-3">
+        Первое число
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@first</span>
+    </dd>
+    <dt class="col-3">
+        Второе число
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@second</span>
+    </dd>
+    <dt class="col-3">
+        Сумма чисел
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@sum</span>
+    </dd>
+    <dt class="col-3">
+        Разность чисел
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@sub</span>
+    </dd>
+    <dt class="col-3">
+        Произведение чисел
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@mult</span>
+    </dd>
+    <dt class="col-3">
+        Частное чисел
+    </dt>
+    <dd class="col-9">
+        <span class="badge badge-light">@div</span>
+    </dd>
+</dl>

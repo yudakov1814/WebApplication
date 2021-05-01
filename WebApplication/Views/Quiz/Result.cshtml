@@ -1,0 +1,31 @@
+﻿@model WebApplication.Models.Quiz
+@{
+    ViewData["Title"] = "Result";
+    var allAns = Model.QuizQuestions.Count;
+    var rightAns = Model.QuizQuestions.Count(x => x.CorrectAnswer == x.UserAnswer);
+    var rightP = (int)(100.0 * rightAns / allAns);
+    var wrongP = 100 - rightP;
+}
+
+<h1>Результаты</h1>
+
+<h2>Правильных ответов @rightAns из @allAns</h2>
+<div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" style="width: @rightP%"></div>
+    <div class="progress-bar bg-danger" role="progressbar" style="width: @wrongP%"></div>
+</div>
+<br>
+<h2>Вопросы</h2>
+<ul class="list-group">
+    @foreach (var question in Model.QuizQuestions)
+    {
+        if (question.UserAnswer == question.CorrectAnswer)
+        {
+            <li class="list-group-item list-group-item-success">@question.Question @question.UserAnswer</li>
+        }
+        else
+        {
+            <li class="list-group-item list-group-item-danger">@question.Question @question.UserAnswer (@question.CorrectAnswer)</li>
+        }
+    }
+</ul>

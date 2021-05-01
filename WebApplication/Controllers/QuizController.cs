@@ -7,24 +7,26 @@ namespace WebApplication.Controllers
     public class QuizController : Controller
     {
         private static Quiz quiz;
+        private static QuizQuestion currentQuizQuestion;
 
         [HttpGet]
         public IActionResult Game()
         {
             quiz = new Quiz();
-            var quizQuestion = new QuizQuestion();
+            currentQuizQuestion = new QuizQuestion();
 
-            return View(quizQuestion);
+            return View(currentQuizQuestion);
         }
 
         [HttpPost]
         public IActionResult Game(QuizQuestion quizQuestion)
         {
-            quiz.QuizQuestions.Add(quizQuestion);
+            currentQuizQuestion.UserAnswer = quizQuestion.UserAnswer;
+            quiz.QuizQuestions.Add(currentQuizQuestion);
 
-            var newQuizQuestion = new QuizQuestion();
+            currentQuizQuestion = new QuizQuestion();
 
-            return View(newQuizQuestion);
+            return View(currentQuizQuestion);
         }
 
         [HttpGet]

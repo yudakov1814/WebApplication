@@ -20,8 +20,8 @@ namespace WebApplication.Models
 
             Question = operation switch
             {
-                Operation.Plus => $"{first} + {second} = ",
-                Operation.Minus => $"{first} - {second} = ",
+                Operation.Plus => $"{first} + {second} =",
+                Operation.Minus => $"{first} - {second} =",
                 _ => string.Empty
             };
 

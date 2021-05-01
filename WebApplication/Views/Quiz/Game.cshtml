@@ -4,13 +4,12 @@
 }
 
 <form method="post" asp-action="Game">
-    <input type="hidden" asp-for="@Model.Question" class="form-control">
-    <input type="hidden" asp-for="@Model.CorrectAnswer" class="form-control">
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">@Model.Question</label>
         <div class="col-sm-10">
             <input type="number" asp-for="@Model.UserAnswer" class="form-control">
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Next</button>
+    <button type="submit" class="btn btn-secondary">Следующий вопрос</button>
+    <a asp-action="Result" class="btn btn-primary">Закончить</a>
 </form>
